@@ -1,7 +1,6 @@
 {
   "name": "express-template",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,5 +16,16 @@
   "bugs": {
     "url": "https://github.com/drlenny/express-template/issues"
   },
-  "homepage": "https://github.com/drlenny/express-template#readme"
+  "homepage": "https://github.com/drlenny/express-template#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "pg": "^8.6.0",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "sequelize-cli": "^6.2.0"
+  },
+  "description": ""
 }
