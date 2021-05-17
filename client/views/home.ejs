@@ -1,0 +1,22 @@
+<%- include('partials/header') -%>
+<div class="box" id="heading">
+<h1>Todo Lists</h1>
+</div>
+<div>
+    <% showLists.forEach(function(newList){ %>
+        <h2><%= newList.title %> </h2>
+        <h3><%= newList.createdAt.toString().slice(-53, -42) %></h3>
+        <a href="/list/<%=newList.id%>">click</a>
+    <% }) %>
+</div>
+<div class="box">
+    <div id="heading">
+        <h1 style="margin: 0%; padding-top: 15px; padding-bottom: 15px;">Make a New List!</h1>
+    </div>
+    <form onsubmit="redirect()" class="item" action="/" method="post">
+        <input type="text" id="title" name="title" placeholder="New List" autocomplete="off">
+        <button type="submit">+</button>
+    </form>
+</div>
+
+<%- include('partials/footer') -%>

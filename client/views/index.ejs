@@ -1,0 +1,12 @@
+<%- include("partials/header") -%>
+    <h1>Select A List</h1>
+    <button id="ping">Ping</button>
+    <p id="testing" onclick="addTest()">Hello!</p>
+    <div>
+        <form onsubmit="redirect()" id="testing" action="/list" method="post">
+            <input type="text" id="title" name="title">
+            <!-- <input type="text" id="test2" name="test2"> -->
+            <button type="submit">Submit</button>
+        </form>
+
+<%- include("partials/footer") -%>
