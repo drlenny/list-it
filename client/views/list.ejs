@@ -23,7 +23,7 @@
       </form>
       <% }); %>
 
-        <form onsubmit="window.location.reload()" data-path="<%=path%>" class="item" action="/list" method="post">
+        <form onsubmit="setTimeout(function(){window.location.reload();},10);" data-path="<%=path%>" class="item" action="/list" method="post">
           <input type="text" id="item" name="item" placeholder="New Item" autocomplete="off">
           <input type="text" class="hidden" id="listId" name="listId" value="<%=listId%>">
           <button type="submit" value="<%=listTitle.title%>">+</button>

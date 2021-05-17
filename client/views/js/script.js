@@ -9,15 +9,13 @@
 function listRefresh(){
     $.post('/list').then(function(data){
         window.location = data.redirectUrl
-    }).catch((error) => {
-        console.log('error', error);
     })
 }
 
-function addTest(){
-    document.getElementById('testing').innerHTML = 
-    'Clicked!'
-}
+// function addTest(){
+//     document.getElementById('testing').innerHTML = 
+//     'Clicked!'
+// }
 
 // function listRefresh(){
 //     $.post('/').then(function(data){

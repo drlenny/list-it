@@ -79,11 +79,9 @@ app.post('/', async (req, res) => {
 })
 
 // // -------TESTING CODE-------------//
-
 // app.get('/index', async (req, res) => {
 //     res.render('index')
 // })
-
 // app.get('/ping', (req, res) => {
 //     //res.send(JSON.stringify('pong')
 //     res.json('pong')
