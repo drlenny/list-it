@@ -6,11 +6,11 @@
 //         .then(data => console.log(data));
 // })
 
-function listRefresh(){
-    $.post('/list').then(function(data){
-        window.location = data.redirectUrl
-    })
-}
+// function listRefresh(){
+//     $.post('/list').then(function(data){
+//         window.location = data.redirectUrl
+//     })
+// }
 
 // function addTest(){
 //     document.getElementById('testing').innerHTML = 

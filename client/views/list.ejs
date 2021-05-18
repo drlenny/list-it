@@ -9,7 +9,7 @@
   <div class="box">
 
     <% newListItems.forEach(function(newItem){ %>
-      <form action="/delete" method="post">
+      <form action="/delete-item" method="post">
 
         <div class="item">
           <input type="checkbox" name="checkbox" value="<%=newItem.id%>" onChange="this.form.submit()">
@@ -26,7 +26,7 @@
         <form onsubmit="setTimeout(function(){window.location.reload();},10);" data-path="<%=path%>" class="item" action="/list" method="post">
           <input type="text" id="item" name="item" placeholder="New Item" autocomplete="off">
           <input type="text" class="hidden" id="listId" name="listId" value="<%=listId%>">
-          <button type="submit" value="<%=listTitle.title%>">+</button>
+          <button id="addItem" type="submit" value="<%=listTitle.title%>">+</button>
         </form>
   </div>
 

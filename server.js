@@ -8,7 +8,7 @@ const path = require('path')
 const ejs = require('ejs');
 
 
-app.use(express.static(path.join(__dirname, 'client')))
+app.use(express.static(path.join(__dirname, '/client')))
 app.set('views', path.join(__dirname, 'client/views'))
 app.set('view engine', 'ejs');
 
@@ -58,7 +58,7 @@ app.post('/list', async (req, res) => {
             item,
             listId
         });
-        res.send({newItem, redirectUrl: '/list/' + listId});
+        res.send({newItem});
     } catch (error) {
         console.log(error)
     }
@@ -71,17 +71,22 @@ app.post('/', async (req, res) => {
         const newList = await List.create({
             title
         });
-        res.send({newList, redirectUrl: '/'})
+        res.send({newList})
     } catch (error) {
         console.log(error)
         res.sendStatus(500);
     }
 })
 
+// delete item from list
+app.delete('', async (req, res) => {
+
+})
+
 // // -------TESTING CODE-------------//
-// app.get('/index', async (req, res) => {
-//     res.render('index')
-// })
+app.get('/index', async (req, res) => {
+    res.render('index')
+})
 // app.get('/ping', (req, res) => {
 //     //res.send(JSON.stringify('pong')
 //     res.json('pong')
