@@ -1,28 +1,46 @@
 <%- include('partials/header') -%>
-    <div class="box" id="heading">
+    <div class="box heading">
         <h1>Todo Lists</h1>
     </div>
-    <div>
+    <div class="row" style="display: flex;">
         <% showLists.forEach(function(newList){ %>
-            <div class="box">
-                <h2>
-                    <%= newList.title %>
-                </h2>
-                <h3>
-                    <%= newList.createdAt.toString().slice(-53, -42) %>
-                </h3>
-                <form action="/list/<%=newList.id%>">
-                    <button type="submit">View List</button>
-                </form>
+            <div class="box col-lg-4">
+                <div class="row listHeading">
+                    <div class="col-6 listHeading">
+                        <h3 class="listHeading">
+                            <%= newList.title %>
+                        </h3>
+                    </div>
+                    <div class="col-6 listHeading">
+                        <h3 class="listHeading">
+                            <%= newList.createdAt.toString().slice(-53, -42) %>
+                        </h3>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-6" style="text-align: center;">
+                        <form action="/list/<%=newList.id%>">
+                            <button class="homeButton editItem" type="submit">View List</button>
+                        </form>
+                    </div>
+                    <div class="col-6" style="text-align: center;">
+                        <form action="/delete/<%=newList.id%>" method="post">
+                            <button class="homeButton editItem" type="submit">Delete List</button>
+                        </form>
+                    </div>
+                </div>
             </div>
 
             <% }) %>
     </div>
     <div class="box">
-        <div id="heading">
+        <div class="heading">
             <h1 style="margin: 0%; padding-top: 15px; padding-bottom: 15px;">Make a New List!</h1>
         </div>
-        <form onsubmit="setTimeout(function(){window.location.reload();},10);" class="item" action="/" method="post">
+        <form onsubmit="setTimeout(function(){window.location.reload();},10);" class="item" action="/" method="post"
+            style="margin-right: 20px;">
             <input type="text" id="title" name="title" placeholder="New List" autocomplete="off">
             <button id="addItem" type="submit">+</button>
         </form>

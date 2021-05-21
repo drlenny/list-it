@@ -1,6 +1,6 @@
 <%- include("partials/header") -%>
 
-  <div class="box" id="heading">
+  <div class="box heading">
     <h1>
       <%= listTitle.title %>
     </h1>
@@ -9,21 +9,27 @@
   <div class="box">
 
     <% newListItems.forEach(function(newItem){ %>
-      <form action="/delete-item" method="post">
+      <form action="/list/delete/<%=newItem.id%>" method="post">
 
-        <div class="item">
-          <input type="checkbox" name="checkbox" value="<%=newItem.id%>" onChange="this.form.submit()">
-          <p>
-            <%= newItem.item %>
-          </p>
-        </div>
+          <div class="item">
+            <div class="itemCheckAndText">
+            <input type="checkbox" name="checkbox" value="<%=newItem.id%>" onChange="this.form.submit()">
+            <p>
+              <%= newItem.item %>
+            </p>
+          </div>
+            <p class="editItem" onclick="">edit</p>
 
-        <input type="hidden" name="listName" value="<%=listTitle%>"></input>
+          </div>
 
+        <input type="hidden" name="listId" value="<%=listId%>"></input>
+
+        <input type="text" class="hidden"></input>
       </form>
       <% }); %>
 
-        <form onsubmit="setTimeout(function(){window.location.reload();},10);" data-path="<%=path%>" class="item" action="/list" method="post">
+        <form onsubmit="setTimeout(function(){window.location.reload();},10);" data-path="<%=path%>" class="item"
+          action="/list" method="post" style="margin-right: 20px;">
           <input type="text" id="item" name="item" placeholder="New Item" autocomplete="off">
           <input type="text" class="hidden" id="listId" name="listId" value="<%=listId%>">
           <button id="addItem" type="submit" value="<%=listTitle.title%>">+</button>

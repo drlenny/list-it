@@ -3,7 +3,6 @@ const app = express()
 const PORT = 3005;
 const Sequelize = require('sequelize');
 const { List, Items } = require('./models');
-const _ = require("lodash");
 const path = require('path')
 const ejs = require('ejs');
 
@@ -79,8 +78,34 @@ app.post('/', async (req, res) => {
 })
 
 // delete item from list
-app.delete('', async (req, res) => {
+app.post('/list/delete/:id', async (req, res) => {
+    try {
+        var listId = req.body.listId
+        await Items.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        res.redirect("/list/" + listId)
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+    }
+})
 
+//delete list
+app.post('/delete/:id', async(req, res) =>{
+    try{
+        await List.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        res.redirect('/')
+    } catch (error){
+        console.log(error);
+        res.sendStatus(500)
+    }
 })
 
 // // -------TESTING CODE-------------//
