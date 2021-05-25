@@ -109,9 +109,9 @@ app.post('/delete/:id', async(req, res) =>{
 })
 
 // // -------TESTING CODE-------------//
-app.get('/index', async (req, res) => {
-    res.render('index')
-})
+// app.get('/index', async (req, res) => {
+//     res.render('index')
+// })
 // app.get('/ping', (req, res) => {
 //     //res.send(JSON.stringify('pong')
 //     res.json('pong')
@@ -129,6 +129,11 @@ app.get('/index', async (req, res) => {
 //     }
 // })
 
-app.listen(PORT, () => {
-    console.log(`API running on port ${PORT}`);
-})
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
+app.listen(port, function() {
+  console.log("Server started on port succesfully");
+});
