@@ -6,6 +6,8 @@ const { List, Items } = require('./models');
 const path = require('path')
 const ejs = require('ejs');
 
+var config = require('./config')
+
 app.use(express.static(path.join(__dirname, '/client')))
 app.set('views', path.join(__dirname, 'client/views'))
 app.set('view engine', 'ejs');
@@ -20,7 +22,11 @@ if (port == null || port == "") {
 
 const pg = require('pg');
 
-let password = process.env.password
+let password = config.password
+if (port == process.env.PORT) {
+    password = process.env.password;
+  }
+
 
 var conString = "postgres://tkdsxsye:" + password + "@batyr.db.elephantsql.com/tkdsxsye" 
 var client = new pg.Client(conString);
