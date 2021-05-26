@@ -41,10 +41,15 @@ client.connect(function (err) {
 });
 
 app.get('/', async (req, res) => {
-    const lists = await List.findAll();
-    res.render('home', {
-        showLists: lists
-    })
+    try{
+        const lists = await List.findAll();
+        res.render('home', {
+            showLists: lists
+        })
+    } catch (error){
+        console.log(error);
+    }
+
 })
 
 // app.get('/index', function(req, res){
