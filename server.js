@@ -23,7 +23,7 @@ if (port == null || port == "") {
 const pg = require('pg');
 
 let password = config.password
-if (port !== null || port !== "") {
+if (port == process.env.PORT) {
     password = process.env.password;
   }
 
