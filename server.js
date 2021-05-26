@@ -14,19 +14,16 @@ app.use(express.json())
 app.use(express.urlencoded())
 
 let port = process.env.PORT;
+
+let password = process.env.password
+
 if (port == null || port == "") {
     var config = require('./config')
-
+    password = config.password
     port = 3000;
 }
 
 const pg = require('pg');
-
-let password = config.password
-if (port == process.env.PORT) {
-    password = process.env.password;
-}
-
 
 var conString = "postgres://tkdsxsye:" + password + "@batyr.db.elephantsql.com/tkdsxsye"
 var client = new pg.Client(conString);
