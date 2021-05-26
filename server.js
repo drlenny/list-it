@@ -6,6 +6,7 @@ const { List, Items } = require('./models');
 const path = require('path')
 const ejs = require('ejs');
 
+const config = require('./config')
 
 app.use(express.static(path.join(__dirname, '/client')))
 app.set('views', path.join(__dirname, 'client/views'))
@@ -30,7 +31,6 @@ client.connect(function(err) {
       return console.error('error running query', err);
     }
     console.log(result.rows[0].theTime);
-    // >> output: 2018-08-23T14:02:57.117Z
     client.end();
   });
 });
@@ -154,5 +154,5 @@ if (port == null || port == "") {
 }
 
 app.listen(port, function() {
-  console.log("Server started on port succesfully");
+  console.log(`Server started on ${port} succesfully`);
 });
