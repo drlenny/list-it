@@ -6,8 +6,6 @@ const { List, Items } = require('./models');
 const path = require('path')
 const ejs = require('ejs');
 
-const config = require('./config')
-
 app.use(express.static(path.join(__dirname, '/client')))
 app.set('views', path.join(__dirname, 'client/views'))
 app.set('view engine', 'ejs');
