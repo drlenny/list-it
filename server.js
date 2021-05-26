@@ -22,11 +22,7 @@ if (port == null || port == "") {
 
 const pg = require('pg');
 
-let password = config.password
-if (port == process.env.PORT) {
-    password = process.env.password;
-  }
-
+let password = process.env.password
 
 var conString = "postgres://tkdsxsye:" + password + "@batyr.db.elephantsql.com/tkdsxsye" 
 var client = new pg.Client(conString);
