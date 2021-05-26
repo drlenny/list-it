@@ -12,9 +12,16 @@ app.use(express.static(path.join(__dirname, '/client')))
 app.set('views', path.join(__dirname, 'client/views'))
 app.set('view engine', 'ejs');
 
-
 app.use(express.json())
 app.use(express.urlencoded())
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+} else {
+    console.log(process.env.PORT);
+    console.log(process.env.password);
+}
 
 const pg = require('pg');
 
@@ -148,10 +155,7 @@ app.post('/delete/:id', async(req, res) =>{
 //     }
 // })
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
+
 
 app.listen(port, function() {
   console.log(`Server started on ${port} succesfully`);
