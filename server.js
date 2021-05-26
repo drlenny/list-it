@@ -6,8 +6,6 @@ const { List, Items } = require('./models');
 const path = require('path')
 const ejs = require('ejs');
 
-var config = require('./config')
-
 app.use(express.static(path.join(__dirname, '/client')))
 app.set('views', path.join(__dirname, 'client/views'))
 app.set('view engine', 'ejs');
@@ -17,7 +15,9 @@ app.use(express.urlencoded())
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 3000;
+    var config = require('./config')
+
+    port = 3000;
 }
 
 const pg = require('pg');
@@ -25,22 +25,22 @@ const pg = require('pg');
 let password = config.password
 if (port == process.env.PORT) {
     password = process.env.password;
-  }
+}
 
 
-var conString = "postgres://tkdsxsye:" + password + "@batyr.db.elephantsql.com/tkdsxsye" 
+var conString = "postgres://tkdsxsye:" + password + "@batyr.db.elephantsql.com/tkdsxsye"
 var client = new pg.Client(conString);
-client.connect(function(err) {
-  if(err) {
-    return console.error('could not connect to postgres', err);
-  }
-  client.query('SELECT NOW() AS "theTime"', function(err, result) {
-    if(err) {
-      return console.error('error running query', err);
+client.connect(function (err) {
+    if (err) {
+        return console.error('could not connect to postgres', err);
     }
-    console.log(result.rows[0].theTime);
-    client.end();
-  });
+    client.query('SELECT NOW() AS "theTime"', function (err, result) {
+        if (err) {
+            return console.error('error running query', err);
+        }
+        console.log(result.rows[0].theTime);
+        client.end();
+    });
 });
 
 app.get('/', async (req, res) => {
@@ -62,7 +62,7 @@ app.get('/list/:listId', async (req, res) => {
     const items = await Items.findAll({
         where: {
             listId: requestedListId
-        }  
+        }
     });
 
     const listTitle = await List.findByPk(requestedListId);
@@ -84,7 +84,7 @@ app.post('/list', async (req, res) => {
             item,
             listId
         });
-        res.send({newItem});
+        res.send({ newItem });
     } catch (error) {
         console.log(error)
     }
@@ -92,12 +92,12 @@ app.post('/list', async (req, res) => {
 
 // create new list
 app.post('/', async (req, res) => {
-    try{
+    try {
         const { title } = req.body
         const newList = await List.create({
             title
         });
-        res.send({newList})
+        res.send({ newList })
     } catch (error) {
         console.log(error)
         res.sendStatus(500);
@@ -121,15 +121,15 @@ app.post('/list/delete/:id', async (req, res) => {
 })
 
 //delete list
-app.post('/delete/:id', async(req, res) =>{
-    try{
+app.post('/delete/:id', async (req, res) => {
+    try {
         await List.destroy({
             where: {
                 id: req.params.id
             }
         })
         res.redirect('/')
-    } catch (error){
+    } catch (error) {
         console.log(error);
         res.sendStatus(500)
     }
@@ -158,6 +158,6 @@ app.post('/delete/:id', async(req, res) =>{
 
 
 
-app.listen(port, function() {
-  console.log(`Server started on ${port} succesfully`);
+app.listen(port, function () {
+    console.log(`Server started on ${port} succesfully`);
 });
