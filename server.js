@@ -16,7 +16,7 @@ app.use(express.urlencoded())
 let port = process.env.PORT;
 
 if (port == null || port == "") {
-    var config = require('./config')
+    var config = require('./conifigure')
     password = config.password
     port = 3000;
 }
