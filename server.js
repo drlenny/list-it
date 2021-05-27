@@ -15,8 +15,6 @@ app.use(express.urlencoded())
 
 let port = process.env.PORT;
 
-let password = process.env.password
-
 if (port == null || port == "") {
     var config = require('./config')
     password = config.password
@@ -24,21 +22,6 @@ if (port == null || port == "") {
 }
 
 const pg = require('pg');
-
-var conString = "postgres://tkdsxsye:" + password + "@batyr.db.elephantsql.com/tkdsxsye"
-var client = new pg.Client(conString);
-client.connect(function (err) {
-    if (err) {
-        return console.error('could not connect to postgres', err);
-    }
-    client.query('SELECT NOW() AS "theTime"', function (err, result) {
-        if (err) {
-            return console.error('error running query', err);
-        }
-        console.log(result.rows[0].theTime);
-        client.end();
-    });
-});
 
 app.get('/', async (req, res) => {
     try{
