@@ -1,9 +1,9 @@
-const express = require('express')
-const app = express()
-const PORT = 3005;
+const express = require('express');
+const dotenv = require('dotenv').config;
+const app = express();
 const Sequelize = require('sequelize');
 const { List, Items } = require('./models');
-const path = require('path')
+const path = require('path');
 const ejs = require('ejs');
 
 app.use(express.static(path.join(__dirname, '/client')))

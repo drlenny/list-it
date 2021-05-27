@@ -13,7 +13,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "engines":{
+  "engines": {
     "node": "12.19.0"
   },
   "bugs": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/drlenny/express-template#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "lodash": "^4.17.21",
