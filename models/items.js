@@ -10,10 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Items.belongsTo(models.List, {
+      Items.belongsTo(models.User, {
         foreignKey: 'listId',
         onDelete: 'CASCADE'
-      });
+      })
+      // define association here
     }
   };
   Items.init({

@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       List.hasMany(models.Items, {
         foreignKey: 'listId'
-      });
+      })
     }
   };
   List.init({
