@@ -1,5 +1,5 @@
 const express = require('express');
-const dotenv = require('dotenv').config;
+const dotenv = require('dotenv').config();
 const app = express();
 const Sequelize = require('sequelize');
 const { List, Items } = require('./models');
@@ -16,7 +16,7 @@ app.use(express.urlencoded())
 let port = process.env.PORT;
 
 if (port == null || port == "") {
-    port = 3000;
+    port = 3001;
 }
 
 const pg = require('pg');
